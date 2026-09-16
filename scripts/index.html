@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lector de sonetos</title>
+
+  <link rel="stylesheet" href="../css/colores.css">
+  <link rel="stylesheet" href="../css/tipografia.css">
+  <link rel="stylesheet" href="../css/distribucion.css">
+
+  <script type="module" src="../js/main.js"></script>
+</head>
+
+<body>
+  <header class="cabecera">
+    <h1>Lector de sonetos</h1>
+    <p class="cabecera__descripcion">
+      Elige un soneto y disfruta de su lectura.
+    </p>
+  </header>
+
+  <main class="lectura">
+    <section class="coleccion" aria-labelledby="coleccion-titulo">
+      <h2 id="coleccion-titulo">Elige una lectura</h2>
+
+      <label class="coleccion__label" for="selector-sonetos">
+        Soneto
+      </label>
+
+      <select
+        class="coleccion__selector"
+        id="selector-sonetos"
+        data-js="selector"
+        disabled
+      >
+        <option value="">Cargando sonetos…</option>
+      </select>
+
+      <p class="mensaje" data-js="estado" role="status"></p>
+      <p class="mensaje mensaje--error"
+         data-js="error" role="alert" hidden></p>
+    </section>
+
+    <article class="soneto" data-js="soneto"
+             aria-labelledby="soneto-titulo" hidden>
+      <header class="soneto__cabecera">
+        <p class="etiqueta" data-js="numero"></p>
+        <h2 class="soneto__titulo"
+            id="soneto-titulo" data-js="titulo"></h2>
+        <p class="soneto__autor" data-js="autor"></p>
+      </header>
+
+      <div class="soneto__estrofas" data-js="estrofas"></div>
+    </article>
+  </main>
+</body>
+</html>

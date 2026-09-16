@@ -1,0 +1,128 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding-bottom: 3rem;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.cabecera,
+.lectura {
+  width: min(72rem, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.cabecera {
+  padding-block: 3rem 2.5rem;
+}
+
+.cabecera__descripcion {
+  margin-top: 1rem;
+}
+
+.lectura {
+  display: grid;
+  grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.coleccion,
+.soneto {
+  min-width: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.75rem;
+}
+
+.coleccion {
+  padding: 1.5rem;
+}
+
+.coleccion h2 {
+  margin-bottom: 1.5rem;
+}
+
+.coleccion__label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.coleccion__selector {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.65rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.coleccion__selector:disabled {
+  cursor: default;
+}
+
+.mensaje {
+  margin-top: 1rem;
+}
+
+.mensaje--error {
+  padding: 0.75rem;
+  border-radius: 0.4rem;
+}
+
+.soneto {
+  padding: clamp(1.4rem, 3vw, 3rem);
+  border-top-width: 4px;
+}
+
+.soneto__cabecera {
+  margin-bottom: 2rem;
+}
+
+.soneto__titulo {
+  margin-block: 0.75rem;
+}
+
+.soneto__estrofa + .soneto__estrofa {
+  margin-top: 1.4rem;
+}
+
+.soneto__estrofas {
+  overflow-wrap: break-word;
+}
+
+:focus-visible {
+  outline-width: 3px;
+  outline-style: solid;
+  outline-offset: 4px;
+}
+
+@media (max-width: 54rem) {
+  .lectura {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cabecera,
+  .lectura {
+    width: calc(100% - 2rem);
+  }
+
+  .cabecera {
+    padding-block: 2rem;
+  }
+}
