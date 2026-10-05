@@ -1,0 +1,59 @@
+/* espacial.css */
+
+/* Layout general con Flexbox para centrado */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.contenedor-principal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+/* Controles superiores */
+.controles-lectura {
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* 
+ * GESTALT: PROXIMIDAD
+ * Separación clara entre el encabezado (título/autor) y el poema
+ */
+.autor {
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+.titulo {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* 
+ * GESTALT: PROXIMIDAD
+ * Los versos de una misma estrofa van muy juntos (poco margin).
+ * Las distintas estrofas (cuartetos/tercetos) van separadas por un hueco mayor.
+ */
+.estrofa {
+    margin-bottom: 2rem; /* Separación grande entre estrofas */
+}
+
+.estrofa:last-child {
+    margin-bottom: 0;
+}
+
+.verso {
+    margin: 0.2rem 0; /* Separación muy pequeña entre versos del mismo grupo */
+}

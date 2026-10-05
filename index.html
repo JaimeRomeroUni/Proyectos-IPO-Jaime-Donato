@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lector de Sonetos</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/cromatico.css">
+    <link rel="stylesheet" href="css/tipografico.css">
+    <link rel="stylesheet" href="css/espacial.css">
+    
+    <!-- JS (Modelo y Controlador vinculados con 'defer') -->
+    <script src="js/poemas.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+
+    <main class="contenedor-principal">
+        
+        <header class="controles-lectura">
+            <label for="selector-sonetos">Elige un poema:</label>
+            <select id="selector-sonetos">
+                <option value="" disabled selected>Selecciona un soneto...</option>
+            </select>
+        </header>
+
+        <article class="soneto" id="vista-soneto">
+            <h1 class="titulo" id="titulo-soneto">Título del Soneto</h1>
+            <h2 class="autor" id="autor-soneto">Nombre del Autor</h2>
+            
+            <div id="contenido-soneto">
+                <section class="estrofa cuarteto">
+                    <p class="verso">Primer verso del primer cuarteto,</p>
+                    <p class="verso">segundo verso que rima con el cuarto,</p>
+                    <p class="verso">tercer verso que rima con el primero,</p>
+                    <p class="verso">cuarto verso que cierra el cuarteto.</p>
+                </section>
+            </div>
+        </article>
+
+    </main>
+
+</body>
+</html>

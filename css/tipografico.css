@@ -1,0 +1,47 @@
+/* tipografico.css */
+
+body {
+    /* Tamaño base del navegador. Usaremos rem para el resto. */
+    font-size: 100%; 
+}
+
+/* 
+ * 1. Dos fuentes contrastadas: Sans-serif para encabezados e interfaz
+ */
+.controles-lectura, .titulo, .autor {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* 
+ * 2. Fuente legible Serif para el bloque de lectura continuada (el soneto)
+ */
+.soneto p.verso {
+    font-family: 'Merriweather', 'Georgia', serif;
+}
+
+/* 
+ * 3. Jerarquía y escalado con unidades proporcionales REM 
+ */
+.titulo {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.autor {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.verso {
+    font-size: 1.25rem;
+    /* Ajustar espacio entre líneas para que no estén amontonadas ni separadas */
+    line-height: 1.6; 
+}
+
+/* 
+ * 4. Limitar el ancho de línea (aprox. 60 caracteres)
+ */
+.soneto {
+    max-width: 65ch; 
+}
