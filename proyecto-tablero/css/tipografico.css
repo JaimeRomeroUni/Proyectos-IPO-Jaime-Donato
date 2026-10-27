@@ -1,0 +1,105 @@
+:root {
+  --fuente-titulos: Georgia, "Times New Roman", serif;
+  --fuente-texto: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--fuente-texto);
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+body,
+button,
+input,
+select {
+  font-family: var(--fuente-texto);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-block: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--fuente-titulos);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.sobretitulo {
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+label,
+legend,
+button,
+select,
+input {
+  font-size: 0.94rem;
+}
+
+label,
+legend {
+  font-weight: 650;
+}
+
+button {
+  font-weight: 750;
+}
+
+.texto-ayuda,
+.instruccion-rapida,
+.pie-pagina,
+.nota-ayuda {
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.estado-partida {
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.estadisticas dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.estadisticas dd {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.lista-instrucciones {
+  line-height: 1.65;
+}
+
+.boton-ayuda::after {
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+}

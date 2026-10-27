@@ -1,0 +1,186 @@
+:root {
+  color-scheme: light;
+
+  --tono-base: 224;
+  --tono-complementario: calc(var(--tono-base) + 180);
+
+  --color-fondo: hsl(var(--tono-base), 35%, 96%);
+  --color-superficie: hsl(var(--tono-base), 35%, 100%);
+  --color-superficie-suave: hsl(var(--tono-base), 34%, 98%);
+  --color-superficie-fuerte: hsl(var(--tono-base), 28%, 92%);
+
+  --color-texto: hsl(var(--tono-base), 34%, 17%);
+  --color-texto-suave: hsl(var(--tono-base), 14%, 43%);
+  --color-borde: hsl(var(--tono-base), 22%, 84%);
+
+  --color-primario: hsl(var(--tono-base), 67%, 54%);
+  --color-primario-oscuro: hsl(var(--tono-base), 62%, 43%);
+  --color-primario-suave: hsl(var(--tono-base), 72%, 94%);
+  --color-contraste-primario: hsl(0, 0%, 100%);
+
+  --color-acento: hsl(var(--tono-complementario), 76%, 51%);
+  --color-exito: hsl(151, 58%, 30%);
+  --color-exito-suave: hsl(151, 52%, 92%);
+  --color-error: hsl(355, 70%, 52%);
+  --color-ficha: #4f46e5;
+
+  --sombra-suave: 0 0.5rem 1.5rem hsla(var(--tono-base), 34%, 20%, 0.08);
+  --sombra-elevada: 0 1.25rem 3rem hsla(var(--tono-base), 34%, 15%, 0.18);
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 0%, hsl(var(--tono-base), 72%, 92%), transparent 28rem),
+    var(--color-fondo);
+  color: var(--color-texto);
+}
+
+.cabecera-principal,
+.panel-controles,
+.zona-juego,
+.panel-ayuda,
+.notificacion {
+  background-color: var(--color-superficie);
+  border-color: var(--color-borde);
+  box-shadow: var(--sombra-suave);
+}
+
+.marca__simbolo {
+  background-color: var(--color-primario-suave);
+}
+
+.marca__simbolo span:nth-child(1) {
+  background-color: #4f46e5;
+}
+
+.marca__simbolo span:nth-child(2) {
+  background-color: #e15b64;
+}
+
+.marca__simbolo span:nth-child(3) {
+  background-color: #24a37a;
+}
+
+.sobretitulo,
+.texto-ayuda,
+.instruccion-rapida,
+.pie-pagina,
+.lista-instrucciones {
+  color: var(--color-texto-suave);
+}
+
+input,
+select {
+  color: var(--color-texto);
+  background-color: var(--color-superficie);
+  border-color: var(--color-borde);
+}
+
+.configuracion-ficha,
+.estadisticas,
+.nota-ayuda {
+  background-color: var(--color-superficie-suave);
+  border-color: var(--color-borde);
+}
+
+.boton-principal {
+  color: var(--color-contraste-primario);
+  background-color: var(--color-primario);
+  box-shadow: 0 0.55rem 1rem hsla(var(--tono-base), 67%, 35%, 0.2);
+}
+.ficha[data-selected="true"]:is(
+    [data-shape="triangle"],
+    [data-shape="diamond"],
+    [data-shape="hexagon"]
+  )::before {
+  background-color: var(--color-superficie);
+}
+
+.boton-icono {
+  color: var(--color-primario-oscuro);
+  background-color: var(--color-primario-suave);
+  border-color: transparent;
+}
+
+.boton-ayuda::after {
+  color: var(--color-contraste-primario);
+  background-color: var(--color-texto);
+}
+
+.estado-partida {
+  color: var(--color-primario-oscuro);
+  background-color: var(--color-primario-suave);
+}
+
+.estado-partida[data-completed="true"] {
+  color: var(--color-exito);
+  background-color: var(--color-exito-suave);
+}
+
+.marco-tablero {
+  background-color: var(--color-superficie-suave);
+  border-color: var(--color-borde);
+}
+
+.tablero {
+  background-color: hsl(var(--tono-base), 26%, 88%);
+  box-shadow: inset 0 0 0 1px hsla(var(--tono-base), 30%, 30%, 0.08);
+}
+
+.celda {
+  background-color: var(--color-superficie);
+  border-color: hsl(var(--tono-base), 20%, 80%);
+  box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.75);
+}
+
+.ficha,
+.muestra-ficha {
+  background-color: var(--color-ficha);
+  box-shadow:
+    inset 0 0.18rem 0 hsla(0, 0%, 100%, 0.28),
+    0 0.35rem 0.7rem color-mix(in srgb, var(--color-ficha) 30%, transparent);
+}
+
+.ficha[data-selected="true"]:is(
+    [data-shape="triangle"],
+    [data-shape="diamond"],
+    [data-shape="hexagon"]
+  ) {
+  background-color: var(--color-acento);
+}
+
+.ficha[data-selected="true"]:is(
+    [data-shape="triangle"],
+    [data-shape="diamond"],
+    [data-shape="hexagon"]
+  )::after {
+  background-color: var(--color-ficha);
+}
+
+.capa-modal {
+  background-color: hsla(var(--tono-base), 35%, 12%, 0.48);
+}
+
+.notificacion {
+  color: var(--color-contraste-primario);
+  background-color: var(--color-texto);
+  box-shadow: var(--sombra-elevada);
+}
+
+.notificacion[data-type="success"] {
+  background-color: var(--color-exito);
+}
+
+.notificacion[data-type="error"] {
+  background-color: var(--color-error);
+}
+
+.aviso-javascript {
+  color: var(--color-contraste-primario);
+  background-color: var(--color-error);
+}
+
+::selection {
+  color: var(--color-texto);
+  background-color: hsl(var(--tono-complementario), 80%, 78%);
+}

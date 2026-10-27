@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Juego de tablero en el que se intercambian fichas hasta completar filas del mismo tipo."
+  >
+  <title>Tríada | Juego de fichas</title>
+
+  <link rel="stylesheet" href="./css/cromatico.css">
+  <link rel="stylesheet" href="./css/tipografico.css">
+  <link rel="stylesheet" href="./css/espacial.css">
+  <link rel="stylesheet" href="./css/interaccion.css">
+
+  <script type="module" src="./js/principal.js"></script>
+</head>
+
+<body>
+  <header class="cabecera-principal">
+    <div class="marca">
+      <span class="marca__simbolo" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+
+      <div>
+        <p class="sobretitulo">Juego de lógica</p>
+        <h1>Tablero Tríada</h1>
+      </div>
+    </div>
+
+    <button
+      class="boton-icono boton-ayuda"
+      type="button"
+      data-action="toggle-help"
+      data-tooltip="Cómo jugar"
+      aria-label="Abrir las instrucciones del juego"
+      aria-controls="panel-ayuda"
+      aria-expanded="false"
+    >?</button>
+  </header>
+
+  <main class="aplicacion">
+    <aside class="panel-controles" aria-labelledby="titulo-configuracion">
+      <div class="titulo-seccion">
+        <p class="sobretitulo">Tu partida</p>
+        <h2 id="titulo-configuracion">Configuración</h2>
+      </div>
+
+      <form class="formulario-controles" data-controls novalidate>
+        <div class="grupo-control">
+          <label for="dimension">Dimensión del tablero</label>
+          <div class="control-con-ayuda">
+            <input
+              id="dimension"
+              name="dimension"
+              type="number"
+              min="3"
+              step="1"
+              value="4"
+              inputmode="numeric"
+              data-control="dimension"
+            >
+            <span class="texto-ayuda">Mínimo: 3 × 3</span>
+          </div>
+        </div>
+
+        <div class="grupo-control">
+          <label for="tamano-fichas">Tamaño de las fichas</label>
+          <select id="tamano-fichas" name="tamano-fichas" data-control="size">
+            <option value="small">Pequeño</option>
+            <option value="medium" selected>Mediano</option>
+            <option value="large">Grande</option>
+          </select>
+        </div>
+
+        <fieldset class="configuracion-fichas">
+          <legend>Apariencia de las fichas</legend>
+          <p class="texto-ayuda">
+            Cada tipo debe diferenciarse por su forma, su color o ambos.
+          </p>
+
+          <article class="configuracion-ficha" data-piece-config="0">
+            <span class="muestra-ficha" data-piece-sample="0" aria-hidden="true"></span>
+            <div class="configuracion-ficha__campos">
+              <h3>Tipo A</h3>
+              <div class="fila-controles">
+                <label for="forma-0">Forma</label>
+                <select id="forma-0" data-shape-control="0">
+                  <option value="circle" selected>Círculo</option>
+                  <option value="square">Cuadrado</option>
+                  <option value="triangle">Triángulo</option>
+                  <option value="diamond">Rombo</option>
+                  <option value="hexagon">Hexágono</option>
+                </select>
+
+                <label class="etiqueta-color" for="color-0">Color</label>
+                <input
+                  id="color-0"
+                  type="color"
+                  value="#4f46e5"
+                  data-color-control="0"
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="configuracion-ficha" data-piece-config="1">
+            <span class="muestra-ficha" data-piece-sample="1" aria-hidden="true"></span>
+            <div class="configuracion-ficha__campos">
+              <h3>Tipo B</h3>
+              <div class="fila-controles">
+                <label for="forma-1">Forma</label>
+                <select id="forma-1" data-shape-control="1">
+                  <option value="circle">Círculo</option>
+                  <option value="square" selected>Cuadrado</option>
+                  <option value="triangle">Triángulo</option>
+                  <option value="diamond">Rombo</option>
+                  <option value="hexagon">Hexágono</option>
+                </select>
+
+                <label class="etiqueta-color" for="color-1">Color</label>
+                <input
+                  id="color-1"
+                  type="color"
+                  value="#e15b64"
+                  data-color-control="1"
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="configuracion-ficha" data-piece-config="2">
+            <span class="muestra-ficha" data-piece-sample="2" aria-hidden="true"></span>
+            <div class="configuracion-ficha__campos">
+              <h3>Tipo C</h3>
+              <div class="fila-controles">
+                <label for="forma-2">Forma</label>
+                <select id="forma-2" data-shape-control="2">
+                  <option value="circle">Círculo</option>
+                  <option value="square">Cuadrado</option>
+                  <option value="triangle" selected>Triángulo</option>
+                  <option value="diamond">Rombo</option>
+                  <option value="hexagon">Hexágono</option>
+                </select>
+
+                <label class="etiqueta-color" for="color-2">Color</label>
+                <input
+                  id="color-2"
+                  type="color"
+                  value="#24a37a"
+                  data-color-control="2"
+                >
+              </div>
+            </div>
+          </article>
+        </fieldset>
+
+        <button class="boton-principal" type="button" data-action="new-game">
+          Nueva partida
+        </button>
+      </form>
+
+      <dl class="estadisticas" aria-label="Datos de la partida">
+        <div>
+          <dt>Movimientos</dt>
+          <dd data-moves>0</dd>
+        </div>
+        <div>
+          <dt>Tablero</dt>
+          <dd data-board-size>4 × 4</dd>
+        </div>
+      </dl>
+    </aside>
+
+    <section class="zona-juego" aria-labelledby="titulo-juego">
+      <header class="cabecera-juego">
+        <div>
+          <p class="sobretitulo">Objetivo</p>
+          <h2 id="titulo-juego">Completa las filas</h2>
+        </div>
+
+        <p class="estado-partida" data-status aria-live="polite">
+          Partida en curso
+        </p>
+      </header>
+
+      <div class="marco-tablero">
+        <div
+          class="tablero"
+          data-board
+          data-size="medium"
+          role="grid"
+          aria-label="Tablero de juego"
+        ></div>
+      </div>
+
+      <p class="instruccion-rapida">
+        Arrastra una ficha sobre otra para intercambiarlas. También puedes seleccionar
+        dos fichas con clic o con el teclado.
+      </p>
+    </section>
+  </main>
+
+  <aside
+    id="panel-ayuda"
+    class="panel-ayuda"
+    data-help-panel
+    aria-labelledby="titulo-ayuda"
+    aria-modal="true"
+    role="dialog"
+    hidden
+  >
+    <header class="panel-ayuda__cabecera">
+      <div>
+        <p class="sobretitulo">Instrucciones</p>
+        <h2 id="titulo-ayuda">Cómo jugar</h2>
+      </div>
+
+      <button
+        class="boton-icono"
+        type="button"
+        data-action="close-help"
+        aria-label="Cerrar las instrucciones"
+      >×</button>
+    </header>
+
+    <ol class="lista-instrucciones">
+      <li>El tablero contiene tres tipos de fichas mezcladas.</li>
+      <li>Arrastra una ficha y suéltala sobre otra para intercambiar sus posiciones.</li>
+      <li>También puedes pulsar una ficha y después otra para intercambiarlas.</li>
+      <li>Ganas cuando todas las fichas de cada fila son del mismo tipo.</li>
+      <li>Cambiar cualquier ajuste crea automáticamente una partida nueva.</li>
+    </ol>
+
+    <p class="nota-ayuda">
+      Todas las partidas se generan con la cantidad exacta de fichas necesaria para
+      que exista al menos una solución.
+    </p>
+  </aside>
+
+  <button
+    class="capa-modal"
+    type="button"
+    data-overlay
+    data-action="close-help"
+    aria-label="Cerrar las instrucciones"
+    hidden
+  ></button>
+
+  <div class="notificacion" data-toast role="status" aria-live="polite" hidden></div>
+
+  <footer class="pie-pagina">
+    <p>Proyecto Tablero · Interacción Persona-Ordenador</p>
+  </footer>
+
+  <noscript>
+    <p class="aviso-javascript">Esta aplicación necesita JavaScript para funcionar.</p>
+  </noscript>
+</body>
+</html>

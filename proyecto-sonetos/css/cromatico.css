@@ -1,0 +1,32 @@
+/* cromatico.css */
+
+:root {
+    /* 
+     * Diseño monocromático paramétrico basado en HSL.
+     */
+    --tono: 210;
+    
+    --color-fondo: hsl(var(--tono), 15%, 95%);
+
+    --color-texto: hsl(var(--tono), 20%, 20%);
+
+    --color-titulo: hsl(var(--tono), 40%, 35%);
+    
+    
+    --color-ui-fondo: hsl(var(--tono), 10%, 90%);
+    --color-ui-borde: hsl(var(--tono), 20%, 80%);
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+select {
+    background-color: var(--color-ui-fondo);
+    color: var(--color-texto);
+    border: 1px solid var(--color-ui-borde);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
