@@ -1,0 +1,132 @@
+/* ==========================================================================
+   DISEÑO TIPOGRÁFICO
+   --------------------------------------------------------------------------
+   Estrategia: DOS FUENTES CONTRASTADAS.
+   - Monoespaciada (fuente de display): títulos, marcador y avisos. Evoca las
+     recreativas y, al tener dígitos de igual anchura, evita que el marcador
+     "baile" cuando cambian los números.
+   - Sans-serif del sistema (fuente de texto): ayuda, ajustes y etiquetas.
+     Prioriza la legibilidad en textos más largos.
+   Se usan fuentes del sistema (sin dependencias externas) y una escala
+   modular de razón 1,25 en rem.
+   ========================================================================== */
+
+:root {
+  --fuente-display: "Cascadia Mono", Consolas, "SF Mono", ui-monospace, "Courier New", monospace;
+  --fuente-texto: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Escala modular 1.25 */
+  --texto-xs: 0.8rem;
+  --texto-s: 0.875rem;
+  --texto-m: 1rem;
+  --texto-l: 1.25rem;
+  --texto-xl: 1.563rem;
+  --texto-xxl: 1.953rem;
+  --texto-xxxl: 2.441rem;
+
+  --interlineado: 1.5;
+  --interlineado-ajustado: 1.15;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-m);
+  line-height: var(--interlineado);
+}
+
+h1,
+h2,
+h3,
+.sobretitulo,
+.marcador dd,
+.aviso__titulo,
+.boton,
+kbd {
+  font-family: var(--fuente-display);
+}
+
+h1 {
+  font-size: var(--texto-xxl);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: var(--interlineado-ajustado);
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: var(--texto-s);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: var(--texto-m);
+  font-weight: 700;
+}
+
+.sobretitulo {
+  font-size: var(--texto-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.marcador dt {
+  font-size: var(--texto-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.marcador dd {
+  font-size: var(--texto-l);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.marcador__dato--destacado dd {
+  font-size: var(--texto-xxl);
+}
+
+.progreso__texto,
+.ajustes legend,
+.pie {
+  font-size: var(--texto-s);
+}
+
+.aviso__titulo {
+  font-size: var(--texto-xl);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.aviso__texto {
+  font-size: var(--texto-s);
+}
+
+.boton {
+  font-size: var(--texto-s);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.boton--icono {
+  font-size: var(--texto-l);
+  text-transform: none;
+}
+
+select {
+  font: inherit;
+}
+
+kbd {
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.teclas th {
+  font-weight: 400;
+  text-align: start;
+  white-space: nowrap;
+}

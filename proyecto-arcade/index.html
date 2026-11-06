@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Tetris con física: las piezas caen por gravedad y los bloques estallan en partículas al completar líneas."
+  >
+  <title>Caída Libre | Tetris arcade</title>
+
+  <link rel="stylesheet" href="./css/cromatico.css">
+  <link rel="stylesheet" href="./css/tipografico.css">
+  <link rel="stylesheet" href="./css/espacial.css">
+  <link rel="stylesheet" href="./css/interaccion.css">
+
+  <script type="module" src="./js/principal.js"></script>
+</head>
+
+<body>
+  <header class="cabecera">
+    <div class="marca">
+      <p class="sobretitulo">Arcade · Canvas API</p>
+      <h1>Caída Libre</h1>
+    </div>
+
+    <button
+      class="boton boton--icono"
+      type="button"
+      data-accion="ayuda"
+      aria-haspopup="dialog"
+      aria-label="Abrir la ayuda del juego"
+      title="Cómo jugar (H)"
+    >?</button>
+  </header>
+
+  <main class="juego">
+    <!-- Panel izquierdo: indicadores de progreso -->
+    <aside class="panel panel--estado" aria-label="Estado de la partida">
+      <section class="tarjeta" aria-labelledby="titulo-marcador">
+        <h2 id="titulo-marcador">Marcador</h2>
+
+        <dl class="marcador">
+          <div class="marcador__dato marcador__dato--destacado">
+            <dt>Puntos</dt>
+            <dd data-marcador="puntos">0</dd>
+          </div>
+          <div class="marcador__dato">
+            <dt>Líneas</dt>
+            <dd data-marcador="lineas">0</dd>
+          </div>
+          <div class="marcador__dato">
+            <dt>Nivel</dt>
+            <dd data-marcador="nivel">1</dd>
+          </div>
+          <div class="marcador__dato">
+            <dt>Récord</dt>
+            <dd data-marcador="record">0</dd>
+          </div>
+        </dl>
+
+        <div class="progreso">
+          <label class="progreso__texto" for="progreso-nivel">
+            <span data-marcador="restantes">10</span> líneas para subir de nivel
+          </label>
+          <progress id="progreso-nivel" data-marcador="progreso" max="10" value="0"></progress>
+        </div>
+      </section>
+
+      <section class="tarjeta" aria-labelledby="titulo-siguiente">
+        <h2 id="titulo-siguiente">Siguiente</h2>
+        <canvas
+          class="lienzo-siguiente"
+          data-lienzo="siguiente"
+          role="img"
+          aria-label="Siguiente pieza"
+        ></canvas>
+      </section>
+    </aside>
+
+    <!-- Zona central: lienzo del juego con aviso superpuesto -->
+    <section class="escenario" data-escenario aria-label="Tablero de juego">
+      <canvas
+        class="lienzo-juego"
+        data-lienzo="juego"
+        role="img"
+        aria-label="Tablero del juego"
+      ></canvas>
+
+      <div class="aviso" data-aviso aria-live="polite">
+        <p class="aviso__titulo" data-aviso-titulo>Caída Libre</p>
+        <p class="aviso__texto" data-aviso-texto>Pulsa <kbd>Enter</kbd> o «Jugar» para empezar</p>
+      </div>
+    </section>
+
+    <!-- Panel derecho: control de la partida y ajustes -->
+    <aside class="panel panel--control" aria-label="Control de la partida">
+      <section class="tarjeta" aria-labelledby="titulo-partida">
+        <h2 id="titulo-partida">Partida</h2>
+
+        <div class="botonera">
+          <button class="boton boton--principal" type="button" data-accion="jugar">Jugar</button>
+          <button class="boton" type="button" data-accion="pausar" disabled>Pausar</button>
+          <button class="boton boton--peligro" type="button" data-accion="finalizar" disabled>Finalizar</button>
+        </div>
+      </section>
+
+      <section class="tarjeta" aria-labelledby="titulo-ajustes">
+        <h2 id="titulo-ajustes">Ajustes</h2>
+
+        <form class="ajustes" data-ajustes>
+          <fieldset class="ajustes__grupo" data-ajustes-inicio>
+            <legend>Antes de empezar</legend>
+
+            <label class="campo">
+              <span class="campo__etiqueta">Nivel inicial</span>
+              <select name="nivelInicial">
+                <option value="1" selected>1 · Tranquilo</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 · Rápido</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10 · Frenético</option>
+              </select>
+            </label>
+
+            <label class="campo">
+              <span class="campo__etiqueta">Ancho del tablero</span>
+              <select name="columnas">
+                <option value="8">8 columnas</option>
+                <option value="10" selected>10 columnas</option>
+                <option value="12">12 columnas</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="ajustes__grupo">
+            <legend>Durante la partida</legend>
+
+            <label class="interruptor">
+              <input type="checkbox" name="sombra" checked>
+              <span>Sombra de caída</span>
+            </label>
+
+            <label class="interruptor">
+              <input type="checkbox" name="particulas" checked>
+              <span>Explosión de partículas</span>
+            </label>
+          </fieldset>
+        </form>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="pie">
+    <p>Interacción Persona-Ordenador · Proyecto Arcade</p>
+  </footer>
+
+  <!-- Componente de ayuda -->
+  <dialog class="ayuda" data-dialogo="ayuda" aria-labelledby="titulo-ayuda">
+    <article class="ayuda__contenido">
+      <header class="ayuda__cabecera">
+        <h2 id="titulo-ayuda">Cómo jugar</h2>
+        <button
+          class="boton boton--icono"
+          type="button"
+          data-accion="cerrar-ayuda"
+          aria-label="Cerrar la ayuda"
+        >×</button>
+      </header>
+
+      <section class="ayuda__seccion">
+        <h3>Objetivo</h3>
+        <p>
+          Coloca las piezas que caen para completar filas horizontales. Cada fila completa
+          desaparece y sus bloques estallan. La partida termina cuando una pieza ya no cabe
+          en la parte superior del tablero.
+        </p>
+      </section>
+
+      <section class="ayuda__seccion">
+        <h3>Controles</h3>
+        <table class="teclas">
+          <tbody>
+            <tr><th scope="row"><kbd>←</kbd> <kbd>→</kbd></th><td>Mover la pieza</td></tr>
+            <tr><th scope="row"><kbd>↑</kbd> o <kbd>X</kbd></th><td>Girar a la derecha</td></tr>
+            <tr><th scope="row"><kbd>Z</kbd></th><td>Girar a la izquierda</td></tr>
+            <tr><th scope="row"><kbd>↓</kbd> (mantener)</th><td>Bajada rápida</td></tr>
+            <tr><th scope="row"><kbd>Espacio</kbd></th><td>Dejar caer la pieza</td></tr>
+            <tr><th scope="row"><kbd>P</kbd> o <kbd>Esc</kbd></th><td>Pausar / reanudar</td></tr>
+            <tr><th scope="row"><kbd>Enter</kbd></th><td>Empezar una partida</td></tr>
+            <tr><th scope="row"><kbd>H</kbd></th><td>Abrir esta ayuda</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="ayuda__seccion">
+        <h3>Puntuación</h3>
+        <ul>
+          <li>1 línea: 100 × nivel · 2 líneas: 300 × nivel</li>
+          <li>3 líneas: 500 × nivel · 4 líneas: 800 × nivel</li>
+          <li>Dejar caer con <kbd>Espacio</kbd>: 2 puntos por cada fila recorrida</li>
+          <li>Cada 10 líneas subes de nivel y las piezas caen más rápido</li>
+        </ul>
+      </section>
+
+      <section class="ayuda__seccion">
+        <h3>Física</h3>
+        <p>
+          Las piezas no bajan a saltos: la gravedad las acelera hasta una velocidad máxima
+          que crece con el nivel. Al tocar el suelo tienes medio segundo para deslizarlas
+          antes de que queden fijas. Los bloques de las líneas completadas salen despedidos
+          y rebotan en el fondo del tablero.
+        </p>
+      </section>
+    </article>
+  </dialog>
+</body>
+</html>

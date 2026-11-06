@@ -1,0 +1,85 @@
+/* ==========================================================================
+   INTERACCIÓN
+   --------------------------------------------------------------------------
+   Retroalimentación visual de los controles: estados hover, foco por
+   teclado, deshabilitado y transiciones. Respeta la preferencia de
+   movimiento reducido del sistema.
+   ========================================================================== */
+
+.boton,
+select {
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 100ms ease;
+}
+
+.boton:hover:not(:disabled),
+select:hover:not(:disabled) {
+  border-color: var(--color-acento);
+}
+
+.boton--principal:hover:not(:disabled) {
+  background-color: var(--color-acento-intenso);
+}
+
+.boton:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.boton:disabled,
+select:disabled,
+fieldset:disabled .interruptor,
+fieldset:disabled .campo {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* Foco visible solo cuando se navega con teclado */
+:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.interruptor {
+  cursor: pointer;
+}
+
+/* Aparición suave del aviso sobre el tablero */
+.aviso:not([hidden]) {
+  animation: aparecer 200ms ease-out;
+}
+
+/* Pausa: el tablero se atenúa para indicar que no responde */
+.escenario[data-estado="pausa"] .lienzo-juego {
+  filter: saturate(0.3);
+}
+
+.escenario[data-estado="jugando"] .lienzo-juego {
+  border-color: var(--color-acento);
+}
+
+.ayuda[open] {
+  animation: aparecer 200ms ease-out;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}

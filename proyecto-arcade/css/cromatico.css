@@ -1,0 +1,135 @@
+/* ==========================================================================
+   DISEÑO CROMÁTICO
+   --------------------------------------------------------------------------
+   Estrategia: COMPLEMENTARIO.
+   - Tono base índigo (h = 235): fondos, superficies y textos de la interfaz.
+     Se usan variaciones de luminosidad del mismo tono (escala monocromática)
+     para crear niveles de profundidad sin introducir colores nuevos.
+   - Tono de acento ámbar (h = 55 = 235 + 180 − 360): su complementario.
+     Se reserva para lo que requiere atención: acción principal, foco,
+     puntuación y avisos. El contraste de tono hace que destaque de inmediato.
+   - Las piezas siguen los colores estándar del Tetris (I cian, O amarillo,
+     T morado, S verde, Z rojo, J azul, L naranja) para que el jugador las
+     reconozca sin aprendizaje. Comparten saturación y luminosidad similares
+     para que convivan de forma armónica sobre el fondo oscuro.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  --tono-base: 235;
+  --tono-acento: 55;
+
+  /* Interfaz (escala del tono base) */
+  --color-fondo: hsl(var(--tono-base) 35% 8%);
+  --color-superficie: hsl(var(--tono-base) 30% 13%);
+  --color-superficie-alta: hsl(var(--tono-base) 28% 19%);
+  --color-borde: hsl(var(--tono-base) 25% 27%);
+  --color-texto: hsl(var(--tono-base) 30% 94%);
+  --color-texto-suave: hsl(var(--tono-base) 16% 70%);
+
+  /* Acento complementario */
+  --color-acento: hsl(var(--tono-acento) 95% 58%);
+  --color-acento-intenso: hsl(var(--tono-acento) 100% 66%);
+  --color-sobre-acento: hsl(var(--tono-base) 45% 10%);
+
+  /* Semánticos */
+  --color-peligro: hsl(355 75% 62%);
+  --color-velo: hsl(var(--tono-base) 40% 6% / 0.78);
+
+  /* Lienzo del juego */
+  --lienzo-fondo: hsl(var(--tono-base) 40% 6%);
+  --lienzo-rejilla: hsl(var(--tono-base) 28% 14%);
+  --lienzo-sombra: hsl(var(--tono-base) 40% 80% / 0.08);
+  --bloque-brillo: hsl(0 0% 100% / 0.3);
+  --bloque-oscuro: hsl(var(--tono-base) 50% 5% / 0.3);
+
+  /* Piezas */
+  --pieza-i: hsl(186 85% 55%);
+  --pieza-o: hsl(52 95% 58%);
+  --pieza-t: hsl(280 70% 64%);
+  --pieza-s: hsl(130 60% 52%);
+  --pieza-z: hsl(355 80% 60%);
+  --pieza-j: hsl(222 85% 64%);
+  --pieza-l: hsl(30 95% 58%);
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+.sobretitulo,
+.marcador dt,
+.progreso__texto,
+.ajustes legend,
+.pie {
+  color: var(--color-texto-suave);
+}
+
+h1,
+.marcador__dato--destacado dd,
+.aviso__titulo {
+  color: var(--color-acento);
+}
+
+.tarjeta,
+.ayuda {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+}
+
+.lienzo-juego,
+.lienzo-siguiente {
+  background-color: var(--lienzo-fondo);
+  border: 2px solid var(--color-borde);
+}
+
+.aviso {
+  background-color: var(--color-velo);
+}
+
+.boton {
+  background-color: var(--color-superficie-alta);
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+}
+
+.boton--principal {
+  background-color: var(--color-acento);
+  color: var(--color-sobre-acento);
+  border-color: var(--color-acento);
+}
+
+.boton--peligro {
+  color: var(--color-peligro);
+}
+
+select {
+  background-color: var(--color-superficie-alta);
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--color-acento);
+}
+
+progress {
+  accent-color: var(--color-acento);
+}
+
+kbd {
+  background-color: var(--color-superficie-alta);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+}
+
+.ayuda::backdrop {
+  background-color: var(--color-velo);
+}
+
+.teclas th,
+.teclas td {
+  border-bottom: 1px solid var(--color-borde);
+}
