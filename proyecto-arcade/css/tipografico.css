@@ -9,6 +9,8 @@
      Prioriza la legibilidad en textos más largos.
    Se usan fuentes del sistema (sin dependencias externas) y una escala
    modular de razón 1,25 en rem.
+   Las mayúsculas se reservan para los títulos (h1, h2, sobretítulo y
+   aviso); etiquetas y botones van en minúscula para no perder legibilidad.
    ========================================================================== */
 
 :root {
@@ -72,9 +74,7 @@ h3 {
 }
 
 .marcador dt {
-  font-size: var(--texto-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: var(--texto-s);
 }
 
 .marcador dd {
@@ -105,15 +105,18 @@ h3 {
 }
 
 .boton {
-  font-size: var(--texto-s);
+  font-size: var(--texto-m);
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .boton--icono {
   font-size: var(--texto-l);
-  text-transform: none;
+}
+
+/* Ancho de línea limitado (~60 caracteres) para facilitar la lectura */
+.ayuda__seccion p,
+.ayuda__seccion ul {
+  max-width: 60ch;
 }
 
 select {
