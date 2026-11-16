@@ -1,11 +1,5 @@
 import { ESTADOS } from "../modelo/ModeloJuego.js";
 
-/**
- * Vista de los elementos HTML: marcador, botones, aviso sobre el tablero,
- * formulario de ajustes y diálogo de ayuda. Los elementos se seleccionan
- * mediante atributos data-*.
- */
-
 const TEXTO_BOTON_JUGAR = {
   [ESTADOS.INICIO]: "Jugar",
   [ESTADOS.JUGANDO]: "Jugar",

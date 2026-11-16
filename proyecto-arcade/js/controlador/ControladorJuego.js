@@ -1,10 +1,5 @@
 import { ESTADOS } from "../modelo/ModeloJuego.js";
 
-/**
- * Controlador: contiene el bucle principal del juego y traduce las acciones
- * del usuario (teclado, botones, ajustes) en operaciones sobre el modelo.
- */
-
 const DT_MAXIMO = 1 / 20; // limita el salto de tiempo si la pestaña se congela
 
 export class ControladorJuego {

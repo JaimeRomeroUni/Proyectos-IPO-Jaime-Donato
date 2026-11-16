@@ -1,13 +1,5 @@
 import { Pieza } from "../modelo/Pieza.js";
 
-/**
- * Vista del lienzo: dibuja el tablero, la pieza, su sombra, las partículas y
- * la siguiente pieza con la Canvas API. Solo lee el modelo, nunca lo modifica.
- *
- * Los colores se leen de las variables CSS (css/cromatico.css) para que todo
- * el diseño cromático quede definido en un único sitio.
- */
-
 const CELDA = 32;           // px lógicos por celda en el tablero
 const CELDA_SIGUIENTE = 24; // px lógicos por celda en la vista previa
 const CELDAS_SIGUIENTE = 5; // la vista previa es un cuadrado de 5 × 5 celdas

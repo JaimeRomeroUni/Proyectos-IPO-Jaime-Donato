@@ -1,18 +1,3 @@
-/* ==========================================================================
-   DISEÑO TIPOGRÁFICO
-   --------------------------------------------------------------------------
-   Estrategia: DOS FUENTES CONTRASTADAS.
-   - Monoespaciada (fuente de display): títulos, marcador y avisos. Evoca las
-     recreativas y, al tener dígitos de igual anchura, evita que el marcador
-     "baile" cuando cambian los números.
-   - Sans-serif del sistema (fuente de texto): ayuda, ajustes y etiquetas.
-     Prioriza la legibilidad en textos más largos.
-   Se usan fuentes del sistema (sin dependencias externas) y una escala
-   modular de razón 1,25 en rem.
-   Las mayúsculas se reservan para los títulos (h1, h2, sobretítulo y
-   aviso); etiquetas y botones van en minúscula para no perder legibilidad.
-   ========================================================================== */
-
 :root {
   --fuente-display: "Cascadia Mono", Consolas, "SF Mono", ui-monospace, "Courier New", monospace;
   --fuente-texto: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

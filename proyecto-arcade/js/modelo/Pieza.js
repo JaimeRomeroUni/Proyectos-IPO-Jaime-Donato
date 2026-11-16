@@ -1,11 +1,3 @@
-/**
- * Pieza (tetrominó).
- *
- * La posición vertical `y` es un número real expresado en celdas: la pieza no
- * salta de fila en fila, sino que se desplaza de forma continua según su
- * velocidad `vy` (celdas/segundo), que a su vez aumenta por la gravedad.
- */
-
 const FORMAS = Object.freeze({
   I: [
     [0, 0, 0, 0],
@@ -64,10 +56,6 @@ export class Pieza {
     return this.forma.findIndex((fila) => fila.some(Boolean));
   }
 
-  /**
-   * Devuelve la forma girada sin modificar la pieza.
-   * @param {1|-1} sentido 1 = horario, -1 = antihorario
-   */
   formaRotada(sentido) {
     const n = this.forma.length;
     return this.forma.map((fila, f) =>

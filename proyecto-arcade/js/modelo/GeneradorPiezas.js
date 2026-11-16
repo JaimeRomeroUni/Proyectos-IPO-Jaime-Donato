@@ -1,10 +1,5 @@
 import { TIPOS } from "./Pieza.js";
 
-/**
- * Generador de piezas con "bolsa de 7": se barajan las siete piezas y se van
- * sacando una a una. Evita rachas largas sin una pieza concreta (más justo
- * para el jugador que un azar puro).
- */
 export class GeneradorPiezas {
   #bolsa = [];
 

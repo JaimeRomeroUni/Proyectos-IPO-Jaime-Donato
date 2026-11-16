@@ -3,11 +3,6 @@ import { Pieza } from "./Pieza.js";
 import { GeneradorPiezas } from "./GeneradorPiezas.js";
 import { Particula } from "./Particula.js";
 
-/**
- * Modelo del juego: estado de la partida, reglas, puntuación y física.
- * No sabe nada del DOM ni del canvas.
- */
-
 export const ESTADOS = Object.freeze({
   INICIO: "inicio",
   JUGANDO: "jugando",
@@ -110,10 +105,6 @@ export class ModeloJuego {
     return this.estado === ESTADOS.JUGANDO || this.estado === ESTADOS.PAUSA;
   }
 
-  /**
-   * Aplica los ajustes. El nivel inicial y el ancho solo cambian fuera de
-   * partida (implican un tablero nuevo); sombra y partículas, en cualquier momento.
-   */
   cambiarAjustes({ nivelInicial, columnas, sombra, particulas }) {
     this.ajustes.sombra = sombra;
     this.ajustes.particulas = particulas;

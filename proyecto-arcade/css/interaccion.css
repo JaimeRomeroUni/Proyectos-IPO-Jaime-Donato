@@ -1,11 +1,3 @@
-/* ==========================================================================
-   INTERACCIÓN
-   --------------------------------------------------------------------------
-   Retroalimentación visual de los controles: estados hover, foco por
-   teclado, deshabilitado y transiciones. Respeta la preferencia de
-   movimiento reducido del sistema.
-   ========================================================================== */
-
 .boton,
 select {
   cursor: pointer;

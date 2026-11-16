@@ -1,9 +1,3 @@
-/**
- * Partícula: fragmento de un bloque que sale despedido al completar una línea.
- * Física básica: velocidad, gravedad, rebote con pérdida de energía y rozamiento.
- * Todas las magnitudes están en celdas y segundos.
- */
-
 const RESTITUCION = 0.45; // fracción de velocidad que conserva al rebotar
 const ROZAMIENTO = 0.8;   // fracción de velocidad horizontal tras tocar el suelo
 
